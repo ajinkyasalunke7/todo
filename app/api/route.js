@@ -1,10 +1,10 @@
 import { connectDb } from "@/lib/config/db";
 import TodoModel from "@/lib/models/tode-model";
 import { NextResponse } from "next/server";
-// const LoadDb = async () => {
-//     await connectDb();
-// };
-// LoadDb();
+const LoadDb = async () => {
+    await connectDb();
+};
+LoadDb();
 
 export async function GET(request) {
     try {
