@@ -50,6 +50,26 @@ export default function Home() {
             alert("Error occured while deleting data: " + error.message);
         }
     };
+
+    const updateTodo = async (id) => {
+        try {
+            const res = await axios.put(
+                "/api",
+                {},
+                {
+                    params: {
+                        mongoId: id,
+                    },
+                }
+            );
+
+            notify("success", res.data.message);
+            fetchTodos();
+        } catch (error) {
+            alert("Error occured while updating data P : " + error.message);
+        }
+    };
+
     useEffect(() => {
         fetchTodos();
     }, []);
@@ -68,7 +88,7 @@ export default function Home() {
     const onSubmitHandler = async (e) => {
         e.preventDefault();
         //console.log(formData);
-        if (formData.title && formData.description == "") {
+        if (formData.title == "" && formData.description == "") {
             alert("Input Fields are Empty");
             return false;
         } else {
@@ -118,8 +138,8 @@ export default function Home() {
                 </button>
             </form>
             <div className="relative overflow-x-auto mt-24 w-[70%] mx-auto">
-                <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                    <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                <table className="w-full text-sm text-left rtl:text-right text-black ">
+                    <thead className="text-xs text-black uppercase bg-gray-50">
                         <tr>
                             <th scope="col" className="px-6 py-3">
                                 Id
@@ -152,6 +172,7 @@ export default function Home() {
                                     complete={item.isCompleted}
                                     mongoId={item._id}
                                     deleteTodo={deleteTodo}
+                                    updateTodo={updateTodo}
                                 />
                             );
                         })}

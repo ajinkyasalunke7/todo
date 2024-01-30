@@ -56,3 +56,25 @@ export async function DELETE(request) {
         });
     }
 }
+
+export async function PUT(request) {
+    try {
+        const mongoId = await request.nextUrl.searchParams.get("mongoId");
+        const res = await TodoModel.findByIdAndUpdate(mongoId, {
+            $set: {
+                isCompleted: true,
+            },
+        });
+        //console.log(res);
+        return NextResponse.json({
+            message: "TODO Completed",
+            status: 200,
+        });
+    } catch (error) {
+        console.log("Error occurred While Updating : R " + error);
+        return NextResponse.json({
+            message: "Unable to Update TODO",
+            status: 500,
+        });
+    }
+}

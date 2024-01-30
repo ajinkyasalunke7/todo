@@ -14,7 +14,7 @@ export const CustomToast = () => {
             toastOptions={{
                 // Define default options
                 className: "",
-                duration: 3000,
+                duration: 2000,
                 style: {
                     background: "#363636",
                     color: "#fff",
@@ -23,6 +23,7 @@ export const CustomToast = () => {
                 // Default options for specific types
                 success: {
                     theme: {
+                        duration: 1000,
                         primary: "green",
                         secondary: "black",
                     },
