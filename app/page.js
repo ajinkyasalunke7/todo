@@ -137,8 +137,8 @@ export default function Home() {
                     Add TODO
                 </button>
             </form>
-            <div className="relative overflow-x-auto mt-24 w-[70%] mx-auto">
-                <table className="w-full text-sm text-left rtl:text-right text-black ">
+            <div className="overflow-x-auto mt-24 w-[100%] mx-auto sm:w-[70%]">
+                <table className="w-full text-sm text-left rtl:text-right text-black divide-y divide-gray-200">
                     <thead className="text-xs text-black uppercase bg-gray-50">
                         <tr>
                             <th scope="col" className="px-6 py-3">
@@ -155,30 +155,29 @@ export default function Home() {
                             </th>
                             <th
                                 scope="col"
-                                className="px-6 py-3 justify-center items-center flex"
+                                className="px-6 py-3 sm:justify-center sm:items-center hidden sm:flex"
                             >
                                 Action
                             </th>
                         </tr>
                     </thead>
                     <tbody>
-                        {todoData.map((item, index) => {
-                            return (
-                                <Todo
-                                    key={index}
-                                    id={index}
-                                    title={item.title}
-                                    description={item.description}
-                                    complete={item.isCompleted}
-                                    mongoId={item._id}
-                                    deleteTodo={deleteTodo}
-                                    updateTodo={updateTodo}
-                                />
-                            );
-                        })}
+                        {todoData.map((item, index) => (
+                            <Todo
+                                key={index}
+                                id={index}
+                                title={item.title}
+                                description={item.description}
+                                complete={item.isCompleted}
+                                mongoId={item._id}
+                                deleteTodo={deleteTodo}
+                                updateTodo={updateTodo}
+                            />
+                        ))}
                     </tbody>
                 </table>
             </div>
+
             <CustomToast />
         </>
     );
