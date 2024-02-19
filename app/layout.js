@@ -15,6 +15,11 @@ export default function RootLayout({ children }) {
             <body className={inter.className}>
                 <Navbar />
                 {children}
+                <script
+                    async
+                    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3264628412888492"
+                    crossorigin="anonymous"
+                ></script>
             </body>
         </html>
     );
